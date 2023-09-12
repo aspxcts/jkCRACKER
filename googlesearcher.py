@@ -18,43 +18,45 @@ def loader():
 def createurl():
     from main import key
     from main import engineid
-    print(key, engineid)
     url = 'https://www.googleapis.com/customsearch/v1?key='
     url += key
     url += '&cx='
     url += engineid
     url += '&q=words%20that%20have%20'
-    print(url)
     return url
 
 def searchandretreive(addon):
     #loader()
-    url = createurl()
-    url += addon
-    useablewords = []
-    loweredaddon = addon.lower()
-    response = requests.get(url)
-    response_json = response.json()
-    words = response_json['items'][0]['snippet']
-    words = words.split()
-    for word in words:
-        if word == loweredaddon:
-            index = words.index(word)
-            words.pop(index)
-        if loweredaddon in word:
-            useablewords.append(word)
-    for word in useablewords:
-        if word == loweredaddon:
-            index = useablewords.index(word)
-            useablewords.pop(index)
+    count = 0
+    while True:
+        url = createurl()
+        url += addon
+        useablewords = []
+        loweredaddon = addon.lower()
+        response = requests.get(url)
+        response_json = response.json()
+        words = response_json['items'][0]['snippet']
+        words = words.split()
+        for word in words:
+            if word == loweredaddon:
+                index = words.index(word)
+                words.pop(index)
+            if loweredaddon in word:
+                useablewords.append(word)
+        for word in useablewords:
+            if word == loweredaddon:
+                index = useablewords.index(word)
+                useablewords.pop(index)
 
-    word = random.choice(useablewords)
-    interval = random.uniform(0.005,0.01)
-    pyautogui.moveTo(810, 1042)
-    pyautogui.leftClick()
-    for char in word:
-        pyautogui.typewrite(char, interval=interval)
+        word = random.choice(useablewords)
+        wordindex = useablewords.index(word)
         interval = random.uniform(0.005,0.01)
-    pyautogui.press('enter')
-    print('typed word')
+        pyautogui.moveTo(810, 1042)
+        pyautogui.leftClick()
+        for char in word:
+            pyautogui.typewrite(char, interval=interval)
+            interval = random.uniform(0.005,0.01)
+        pyautogui.press('enter')
+        useablewords.pop(wordindex)
+        count += 1
 

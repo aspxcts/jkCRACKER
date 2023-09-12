@@ -28,3 +28,5 @@ pip install -r requirements.txt
 4. Then click 'Create'
 5. Click 'Customize'
 6. Then copy your search engine id and paste in in id.txt
+
+#### Then run main.py and you should be good to go!

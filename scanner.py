@@ -20,10 +20,8 @@ def scan():
     choice = input(f"""{y}[{b}#{y}]{w} Choice: """).lstrip("0")
     if choice == '1':
         multipler = 1
-        print(multipler)
     elif choice == '2':
         multipler = 1.111111111111111
-        print(multipler)
     else:
         multipler = 1
     keywordlocation = {'left': 771, 'top': 543*multipler, 'width': 100, 'height': 100*multipler}
@@ -36,9 +34,8 @@ def scan():
             playerturnresult = reader.readtext(playerturn, detail=0)
             addon = sep.join(keywordresult)
             if len(playerturnresult) == 0:
-                print("found addon ", addon)
                 from googlesearcher import searchandretreive
                 searchandretreive(addon)
 
 
-            time.sleep(2)
+            time.sleep(0.5)

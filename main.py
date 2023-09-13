@@ -2,16 +2,6 @@ import sys, time, os, ctypes
 from colorama import Fore
 from scanner import scan
 
-with open('key.txt', 'r') as f:
-    mainkey = f.read()
-    print("found key ", mainkey)
-with open('id.txt', 'r') as f2:
-    mainengineid = f2.read()
-    print("found id ", mainengineid)
-
-key = mainkey
-engineid = mainengineid
-
 THIS_VERSION = "1.3.0"
 
 y = Fore.LIGHTYELLOW_EX

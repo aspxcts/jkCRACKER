@@ -1,12 +1,18 @@
 import sys, time, os, ctypes
 from colorama import Fore
 from scanner import scan
+import requests
 
 THIS_VERSION = "1.3.0"
 
 y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTCYAN_EX
 w = Fore.LIGHTWHITE_EX
+
+response = requests.get("https://raw.githubusercontent.com/first20hours/google-10000-english/master/20k.txt")
+words = response.text.splitlines()
+word_list = list(words)
+word_dict = {word: word for word in word_list}  
 
 
 def hometitle():

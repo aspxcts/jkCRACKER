@@ -1,12 +1,9 @@
-import requests
 import pyautogui
 import random
 import sys
 import time
 import re
-from collections import defaultdict
 from colorama import Fore
-from scanner import scan
 
 y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTCYAN_EX
@@ -28,21 +25,19 @@ def loader():
 
 def searchandretreive(addon):
     loweredaddon = addon.lower()
-    response = requests.get("https://raw.githubusercontent.com/first20hours/google-10000-english/master/20k.txt")
-    words = response.text.splitlines()
-    word_list = list(words)
-    word_dict = {word: word for word in word_list}
+    from main import word_dict
     found_words = [word for word in word_dict if re.search(loweredaddon, word)]
     word = random.choice(found_words)
 
     if loweredaddon in word:
         wordindex = found_words.index(word)
-        interval = random.uniform(0.005, 0.01)
+        interval = random.uniform(0.0005, 0.0006)
         pyautogui.moveTo(810, 1042)
         pyautogui.leftClick()
+        pyautogui.write(word)
         for char in word:
             pyautogui.typewrite(char, interval=interval)
-            interval = random.uniform(0.005, 0.01)
+            interval = random.uniform(0.0005, 0.0006)
         pyautogui.press('enter')
         found_words.pop(wordindex)
     else:

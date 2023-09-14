@@ -14,6 +14,8 @@ cd C:\Users\(user)\Downloads\jkCRACKER-master\jkCRACKER-master
 ```bash
 pip install -r requirements.txt
 ```
+
+## Don't need to follow anymore due to new update
 #### How to get your google search api key
 1. Go to https://developers.google.com/custom-search/v1/overview
 2. Click 'Get a Key'![image](https://github.com/aspxcts/jkCRACKER/assets/74156205/cd6a94a3-6d48-48b1-8f72-93a7a9e58e4b)

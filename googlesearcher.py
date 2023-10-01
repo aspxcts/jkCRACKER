@@ -31,18 +31,16 @@ def searchandretreive(addon):
 
     if loweredaddon in word:
         wordindex = found_words.index(word)
-        interval = random.uniform(0.0005, 0.0006)
+        interval = float(0.0006)
         pyautogui.moveTo(810, 1042)
         pyautogui.leftClick()
-        pyautogui.write(word)
+        #pyautogui.write(word)
         for char in word:
             pyautogui.typewrite(char, interval=interval)
-            interval = random.uniform(0.0005, 0.0006)
+            interval = float(0.0005)
         pyautogui.press('enter')
         found_words.pop(wordindex)
     else:
         wordindex = found_words.index(word)
         found_words.pop(wordindex)
         searchandretreive(addon)
-
-

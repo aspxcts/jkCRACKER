@@ -1,6 +1,7 @@
 import easyocr
 import mss
 import numpy
+import pyautogui
 from colorama import Fore
 import time
 
@@ -28,12 +29,16 @@ def scan():
     playerturnlocation = {'left': 655, 'top': 1013*multipler, 'width': 400, 'height': 100*multipler}
     with mss.mss() as sct:
         while True:
-            keyword = numpy.asarray(sct.grab(keywordlocation))
-            keywordresult = reader.readtext(keyword, detail=0)
             playerturn = numpy.asarray(sct.grab(playerturnlocation))
             playerturnresult = reader.readtext(playerturn, detail=0)
-            addon = sep.join(keywordresult)
+            joinbutton = sep.join(playerturnresult)
+            if joinbutton == "Join game":
+                pyautogui.moveTo(810, 1042)
+                pyautogui.leftClick()
             if len(playerturnresult) == 0:
+                keyword = numpy.asarray(sct.grab(keywordlocation))
+                keywordresult = reader.readtext(keyword, detail=0)
+                addon = sep.join(keywordresult)
                 from googlesearcher import searchandretreive
                 searchandretreive(addon)
 

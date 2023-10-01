@@ -9,7 +9,7 @@ y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTCYAN_EX
 w = Fore.LIGHTWHITE_EX
 
-response = requests.get("https://raw.githubusercontent.com/first20hours/google-10000-english/master/20k.txt")
+response = requests.get("https://raw.githubusercontent.com/nicolaspiet/jklm-word-bot/main/wordlist.txt")
 words = response.text.splitlines()
 word_list = list(words)
 word_dict = {word: word for word in word_list}  

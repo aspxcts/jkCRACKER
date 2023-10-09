@@ -1,9 +1,10 @@
+from colorama import Fore
 import pyautogui
 import random
 import sys
 import time
 import re
-from colorama import Fore
+from scanner import scan
 
 y = Fore.LIGHTYELLOW_EX
 b = Fore.LIGHTCYAN_EX
@@ -23,22 +24,30 @@ def loader():
         time.sleep(0.2)
 
 
-def searchandretreive(addon):
+def searchandretreive(addon, delay):
     loweredaddon = addon.lower()
     from main import word_dict
     found_words = [word for word in word_dict if re.search(loweredaddon, word)]
     word = random.choice(found_words)
 
     if loweredaddon in word:
+
         wordindex = found_words.index(word)
-        interval = float(0.0006)
+        interval = random.randint(1, 10)
+        interval = interval / 1000
         pyautogui.moveTo(810, 1042)
         pyautogui.leftClick()
-        #pyautogui.write(word)
-        for char in word:
-            pyautogui.typewrite(char, interval=interval)
-            interval = float(0.0005)
-        pyautogui.press('enter')
+        if delay:
+            print("delay")
+            for char in word:
+                pyautogui.typewrite(char, interval=interval)
+                interval = random.randint(1, 10)
+                interval = interval / 1000
+            pyautogui.press('enter')
+        if not delay:
+            print("no delay")
+            pyautogui.write(word)
+            pyautogui.press('enter')
         found_words.pop(wordindex)
     else:
         wordindex = found_words.index(word)

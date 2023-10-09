@@ -33,7 +33,7 @@ def loader():
     for i in l + l + l:
         sys.stdout.write(f"""\r{y}[{b}#{y}]{w} Cooking... {i}""")
         sys.stdout.flush()
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 
 def setTitle(_str):
@@ -76,6 +76,7 @@ def main():
     clear()
     setTitle(f"JKCRACK Menu v{THIS_VERSION}")
     hometitle()
+
     print(f"""      {y}[{b}-{y}]{w} Main Options:           
     \n          {y}[{w}01{y}]{w} Auto Play               
     \n          {y}[{w}02{y}]{w} SOON™️             
